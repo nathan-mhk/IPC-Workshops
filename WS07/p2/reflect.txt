@@ -1,11 +1,40 @@
 ///////////////////////////////////////////////////////////////////////////
                                Reflection
                              Workshop - #7
-Full Name  : 
-Student ID#: 
+Full Name  : Nathan Kong
+Student ID#: 150950236
 
 Authenticity Declaration:
 I declare this submission is the result of my own work and has not been
 shared with any other student or 3rd party content provider. This submitted
 piece of work is entirely of my own creation.
 ///////////////////////////////////////////////////////////////////////////
+
+1.
+    Yes. The game had prompted users for the specific path length of the 
+    game during the set-up phase, and player's position during the playing 
+    phase. We can use these stored variables as the terminating condition 
+    in for loops to enclose repetitive codes.
+
+2.
+    By using structures, we can group related variables together under the 
+    same construct. Like player's lives and player's treasures. It will be 
+    easier for us to understand and read the code as we can easily 
+    identify whether the variable is associated with the player or the 
+    game. Without using structure, the code will not be easily scalable. 
+    For instance, if we want to add a second player to the game, with 
+    structure, all we need to do is simply declare an extra variable of 
+    the same structure. Without structure, we will need to add a lot of 
+    variables which is essentially the same as the first player. Which 
+    will make the program a lot more complicated and messy.
+
+3.
+    My code ended up with a maximum of 3 levels of nesting:
+    do {
+      if (repeat) {
+        if (player.moves[playerPos - 1]) {} else {
+          if (game.bombs[playerPos - 1] && game.treas[playerPos - 1]) {
+          }
+        }
+      }
+    } while (repeat);
