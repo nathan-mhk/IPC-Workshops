@@ -1,6 +1,22 @@
+<<<<<<< Updated upstream
 //
 // Float issues, casting, rounding, working in cents...
 //
+=======
+/*/////////////////////////////////////////////////////////////////////////
+                          Workshop - #2 (P1)
+Full Name  : Nathan Kong
+Student ID#: 150950236
+Email      : nkong@myseneca.ca
+Section    : NDD
+
+Authenticity Declaration:
+
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+/////////////////////////////////////////////////////////////////////////*/
+>>>>>>> Stashed changes
 
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -48,6 +64,37 @@ int main(void)
     remaining = subTotal % 25; // Use Modulus operator %!!!
     printf("Quarters: %d (Remaining: %d)\n", coins, remaining);
     printf("Quarters: %d (Remaining: $%.2lf)\n", coins, remaining/100.0);
+
+    double sPrice, mPrice, lPrice;
+    int numShirts, subTotal, taxes, total;
+
+    printf("Set Shirt Prices\n================\n");
+
+    printf("Enter the price for a SMALL shirt: $");     // 17.96
+    scanf("%lf", &sPrice);
+    printf("Enter the price for a MEDIUM shirt: $");    // 26.96
+    scanf("%lf", &mPrice);
+    printf("Enter the price for a LARGE shirt: $");     // 35.97
+    scanf("%lf", &lPrice);
+
+    printf("\nShirt Store Price List\n======================\n");
+    printf("SMALL  : $%.2lf\n", sPrice);
+    printf("MEDIUM : $%.2lf\n", mPrice);
+    printf("LARGE  : $%.2lf\n", lPrice);
+
+    printf("\nPatty's shirt size is '%c'\n", patSize);
+    printf("Number of shirts Patty is buying: ");
+    scanf("%d", &numShirts);
+
+    subTotal = sPrice * 100 * numShirts + 0.5;
+    taxes = subTotal * TAX + 0.5;
+    total = subTotal + taxes;
+
+    printf("\nPatty's shopping cart...\n");
+    printf("Contains : %d shirts\n", numShirts);
+    printf("Sub-total: $%8.4lf\n", subTotal / 100.0);
+    printf("Taxes    : $%8.4lf\n", taxes / 100.0);
+    printf("Total    : $%8.4lf\n", total / 100.0);
 
     return 0;
 }

@@ -1,10 +1,10 @@
 ///////////////////////////////////////////////////////////////////////////
                               Reflection
                           Workshop - #2 (P2)
-Full Name  : 
-Student ID#: 
-Email      : 
-Section    : 
+Full Name  : Nathan Kong
+Student ID#: 150950236
+Email      : nkong@myseneca.ca
+Section    : NDD
 
 Authenticity Declaration:
 
@@ -13,3 +13,75 @@ shared with any other student or 3rd party content provider. This submitted
 piece of work is entirely of my own creation.
 ///////////////////////////////////////////////////////////////////////////
 
+1. 
+To represent numbers with decimal points in binary, they are stored 
+using the IEEE754 format. However, it is impossible to represent the exact 
+value of the number using such format, regardless of single or double 
+precsion, unless they are ended with something like .125, .5, .25, etc (I 
+believe i.e. representable with 1/(2^n)? .125 is 1/(2^3) and so on). 
+
+From the output we can see that the value of `price1` is actually 
+"17.959999..." instead of "17.96". So, when we multiply it by 100, it will 
+be "1795.9999...". When we cast it into an `int`, the decimal points will 
+be dropped, i.e. "1795", instead of "1796". 
+
+For `price2` and `price4`, as we are using double-precision floating point 
+representation, the accuracy of the numbers after the decimal point is 
+higher than single-precision one. Accurate enough for us to do the 
+operation of multiplying by 100 and dropping the numbers behind the 
+decimal points. 
+
+As for `price3`, I would say it is just lucky for my machine that the 
+value is stored as "17.980000..." instead of "17.979999...".
+
+2. 
+For the 1st one, we are dividing `money` with `100.0`, indicating that 
+we are not doing integer division. As such, `money` will be implicitly 
+coerced into double, and we will get 72.45 instead of 72.
+
+For the second one, we are doing explicit casting by using `(double)100`, 
+forcing the program to promote the 100 to double even though it is written 
+as an integer.
+
+For the third one, instead of promoting `100`, we are promoting the 
+variable `money` from `int` to `double` with `(double)money`.
+
+3. 
+    a) 
+        The value of variable `result` is 72. Variable `money` is an 
+        integer, and we are dividing it by another integer, 100. And there 
+        are neither implicit nor explicit casting used in this line of 
+        code. Thus, integer division will be applied, truncating the .45 
+        after the division.
+    b)
+        1: $0.00
+        2: $72
+        3: $0.00
+        4: $72
+    c) 
+        The mismatch between the format specifier in the `printf` and the 
+        variable actually provided to the function can lead to undefined 
+        behaviour.
+
+        For the 1st `printf`, the format specifier `%.2lf` indicates that 
+        we would like to print a double-precision floating point number 
+        with 2 decimal points. However, in the latter part of the function 
+        we are doing integer division, as there are no explicit/implicit 
+        casting. As a result, the function is getting an `int` argument 
+        instead of the expected `double` argument.
+
+        Same thing happens to the 3rd sample, variable `result` is an 
+        `int`, but the `printf` function is expecting a double-precision 
+        floaing point with 2 decimal points (`%.2lf`). 
+
+        For both of these samples, the action that we are trying to 
+        perform is forcing a variable with fewer information to be 
+        displayed in a format with more information (`int` -> `double`). 
+        Unlike the calculation in 2, the program will not automatically 
+        perform promotion on the mismatched variables type (converting 72 
+        to 72.00). On my machine, the result will be 0 everytime. On my 
+        machine, if I were doing the other way around 
+        (`printf("%d\n", money / 100.0)`, `double` -> `int`), the result 
+        will be gibberish everytime I execute the program. As such, the 
+        behavior of printf will be undefined if there's a mismatch between 
+        the format specifier and the type of the argument provided.
