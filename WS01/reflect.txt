@@ -2,10 +2,10 @@
 
                               Reflection
                              Workshop - #1
-Full Name  : 
-Student ID#: 
-Email      : 
-Section    : 
+Full Name  : Nathan Kong
+Student ID#: 150950236
+Email      : nkong@myseneca.ca
+Section    : NDD
 
 Authenticity Declaration:
 
@@ -14,4 +14,20 @@ shared with any other student or 3rd party content provider. This submitted
 piece of work is entirely of my own creation.
 ///////////////////////////////////////////////////////////////////////////
 
+1. I do have previous programming experiences, but they were from a couple
+   years ago already. C, C++, Java, JavaScript, Python, Swift, VBA. My 
+   experiences with C, C++, and Java were all during my uni period. I do
+   have a little bit more workplace-level experiences with JavaScript,
+   Python, and VBA.
 
+2. Compiler is like a translater that converts a program written in higher
+   level languages (like C) into machine level language. GCC is a compiler
+   collection, in which C is one of the languages that it supports. There
+   are lots of options that one can use when compiling your files, like
+   optimization level, name of the compiled files, etc.
+
+3. I haven't touched programming related things for almost 2 years now,
+   so I would treat myself as having a fresh start, and a refresh on some
+   fundamentals with this course. However, because I do have some
+   background, I have high goals and expectations on myself. And I hope
+   my skills haven't got too rusty to achieve that.
