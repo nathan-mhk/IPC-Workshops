@@ -1,10 +1,10 @@
 ///////////////////////////////////////////////////////////////////////////
                               Reflection
                           Workshop - #3 (P2)
-Full Name  : 
-Student ID#: 
-Email      : 
-Section    : 
+Full Name  : Nathan Kong
+Student ID#: 150950236
+Email      : nkong@myseneca.ca
+Section    : NDD
 
 Authenticity Declaration:
 I declare this submission is the result of my own work and has not been
@@ -12,3 +12,96 @@ shared with any other student or 3rd party content provider. This submitted
 piece of work is entirely of my own creation.
 ///////////////////////////////////////////////////////////////////////////
 
+1.
+    The logical expression for coffee ID 2 and ID 3 are the same as that 
+    of coffee ID 1 shown below, only with variables `coffee1Weight` 
+    replaced with `coffee2Weight` and `coffee3Weight` respectively:
+
+    (coffee1Weight == 250 && ctmCoffeeWgt >= 1 && ctmCoffeeWgt <= 4) ||
+    (coffee1Weight == 500 && ctmCoffeeWgt >= 5 && ctmCoffeeWgt <= 9) ||
+    (coffee1Weight == 1000 && ctmCoffeeWgt >= 10)
+
+    A)
+        8 relational expressions are used:
+            1. coffee1Weight == 250
+            2. ctmCoffeeWgt >= 1
+            3. ctmCoffeeWgt <= 4
+            4. coffee1Weight == 500
+            5. ctmCoffeeWgt >= 5
+            6. ctmCoffeeWgt <= 9
+            7. coffee1Weight == 1000
+            8. ctmCoffeeWgt >= 10
+    B)
+        7 logical expressions are used:
+            1. ...250 && ctmCoffeeWgt...
+            2. ...1 && ctmCoffeeWgt...
+            3. ...4) || (coffee1Weight...
+            4. ...500 && ctmCoffeeWgt...
+            5. ...5 && ctmCoffeeWgt...
+            6. ...9) || (coffee1Weight...
+            7. ...1000 && ctmCoffeeWgt...
+
+2. 
+    My original method did not use DeMorgan's Law:
+    (prod3Id != prod1Id) && (prod3Id != prod2Id)
+    The same logic after applying DeMorgan's Law:
+    (prod3Id == prod1Id) || (prod3Id == prod2Id)
+
+3.
+    The first way, which is also the required way, is to group all of the 
+    variables together at the top of the main function. Based on the 
+    section of part 2, I've further splitted the variables into two groups:
+
+        char coffee1Type, coffee2Type, coffee3Type;
+        int coffee1Weight, coffee2Weight, coffee3Weight;
+        char coffee1Cream, coffee2Cream, coffee3Cream;
+
+        char ctmCoffeeTyp;
+        int ctmCoffeeWgt;
+        char ctmCoffeeCrm;
+
+        // ...Rest of the code...
+
+    This is because the second group of variables will not be used until 
+    the customer preference input part. I've also grouped them as the 
+    transpose of the displaying table, to make variables of same type on 
+    the same line of code:
+    ----------------------------------------
+    |coffee1Type|coffee1Weight|coffee1Cream|
+    |-----------|-------------|------------|
+    |coffee2Type|coffee2Weight|coffee2Cream|
+    |-----------|-------------|------------|
+    |coffee3Type|coffee3Weight|coffee3Cream|
+    ----------------------------------------
+                    | transpose
+                    V
+    -------------------------------------------
+    | coffee1Type | coffee2Type | coffee3Type |  (all char type)
+    |-------------|-------------|-------------|
+    |coffee1Weight|coffee2Weight|coffee3Weight|  (all int type)
+    |-------------|-------------|-------------|
+    |coffee1Cream |coffee2Cream |coffee3Cream |  (all char type)
+    -------------------------------------------
+
+
+    The second way I could think of organizing the variables is moving the 
+    aforementioned second group of variables to the later part of the code:
+
+        char coffee1Type, coffee2Type, coffee3Type;
+        int coffee1Weight, coffee2Weight, coffee3Weight;
+        char coffee1Cream, coffee2Cream, coffee3Cream;
+
+        // ...Product data input...
+        // ...Display product data...
+
+        char ctmCoffeeTyp;
+        int ctmCoffeeWgt;
+        char ctmCoffeeCrm;
+
+        // ...Customer preference input...
+        // ...Display summary of results...
+    
+    Doing so can visually divide the whole program into two parts - 
+    product-input-and-display and customer-input-and-display. This can 
+    make the code easier to understand, as the variables that stores 
+    customer's input are only used in the later part of the code.
