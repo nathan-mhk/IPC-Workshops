@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////
                                Reflection
                              Workshop - #6
-Full Name  : 
-Student ID#: 
+Full Name  : Nathan Kong
+Student ID#: 150950236
 
 Authenticity Declaration:
 I declare this submission is the result of my own work and has not been
@@ -10,3 +10,50 @@ shared with any other student or 3rd party content provider. This submitted
 piece of work is entirely of my own creation.
 ///////////////////////////////////////////////////////////////////////////
 
+1.
+    Different types of array are usually used/preferred in different kind 
+    of scenarios. Take our workshops as example, we would usually use 
+    do-while loops for input validation, and for-loops for iterating 
+    through iterables like arrays. This is because while loops are more 
+    suitable on condition based scenarios, and for-loops are more suitable 
+    on iteration based scenarios. 
+    When working with arrays, for-loops are preferred. This is because 
+    for-loops explicitly specifies the number of iterations, starting 
+    index, and increment size that the program will perform, all in the 
+    same line of code. This makes it suitable for use on arrays on various 
+    scenarios. Like when we want a different starting position, or a 
+    different size of increment. This also makes the code easier to read 
+    and the loop easier to configure, as the configurations are all in the 
+    same place.
+
+2.
+    To test the program, I would run the program with different kinds of 
+    inputs. Like accepted input, invalid inputs, etc. This allows me to 
+    check whether I have implement the input validation correctly.
+    To debug the program, I would use the built-in debug feature of the 
+    IDE. I will then step over the code line by line to see if the code is 
+    doing that I want or intended to, or whether there are some unexpected 
+    behaviors. 
+    To discover any potential problems, I would compile the program first 
+    to check if there's any compilation error. If there is, I will then 
+    read through the error list carefully. Most of the time the compiler 
+    is smart enough to point out both syntatic and semantic errors. Those 
+    errors will also include the particular line number where the error 
+    were found, where I can double click on it to quickly jump to that 
+    line.
+
+3.
+    First, I would go to the line of the printf statement that prints this 
+    particular sentence. As the mismatched part seems to come from a 
+    variable, I will then check if the format specifiers of the printf 
+    statement is correct. 
+    Next, I will trace the variable backwards, one step at a time, on the 
+    line of code where they are used/assigned. This is to check if there 
+    are any incorrect action performed, like assigning to a wrong 
+    variable, typos on the calculations, etc. 
+    Finally, I would set breakpoints across the program and monitor the 
+    changes that happens to that particular variable with the built-in 
+    debugger. This allows me to closely follow the calculation of the 
+    variable (and hopefully how 567.89 was calculated instead of 0), and 
+    allows me to pinpoint the error easily.
+    
