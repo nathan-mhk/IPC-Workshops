@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////
                                Reflection
                              Workshop - #5
-Full Name  : 
-Student ID#: 
+Full Name  : Nathan Kong
+Student ID#: 150950236
 
 Authenticity Declaration:
 I declare this submission is the result of my own work and has not been
@@ -10,3 +10,49 @@ shared with any other student or 3rd party content provider. This submitted
 piece of work is entirely of my own creation.
 ///////////////////////////////////////////////////////////////////////////
 
+1.
+    First, the code will be easier to maintain. For instance, in this 
+    workshop we defined macro MIN_YEAR to be 2012. If we decided to change 
+    the minimum year allowed, all we have to do is to change one line of 
+    code - the line that defines the macro. However, if we are using 
+    constant literals 2012 instead, we will have to change all lines of 
+    code that uses the same constant literal. This could be a hassle when 
+    the value is being used tens or hundreds of times.
+
+    Second, avoid typos. IDEs have autocomplete feature, but it was limited 
+    to macros and variables only. Take the same MIN_YEAR macro as example, 
+    if we are using constant literal, it is possible that we mistakenly 
+    typed 2021 or 20`1 instead of 2012 without noticing. If we use macros 
+    or variables instead, the autocomplete feature can prevent such thing 
+    from happening.
+
+    Third, the code will be easier to read. By using macros and variables, 
+    we are giving those constant literal a meaning. For instance, instead 
+    of using 0 and 5.0, I stored then into two variables `MIN_RATING` and 
+    `MAX_RATING`. As a result, the first line of code will be much easier 
+    to read/understand than the second line of code:
+
+        morningRating < MIN_RATING || morningRating > MAX_RATING
+        morningRating < 0 || morningRating > 5
+
+
+2.
+    Let's say the validation routine is "A", and the calculation logic is 
+    "B". In this workshop, we have 2 input validation (morning rating and 
+    evening rating) and 2 calculation logic (sum and average). The 
+    structure of this workshop is "AABB". If we do not separate the two, 
+    the structure will be "ABAB".
+
+    First, the code will be easier to expand when we separate the input 
+    validation and calculation. If we would like to expand the validation 
+    routine, like ensuring user's input is a number, or adding additional 
+    variables like afternoon rating, it will be easier to implement the 
+    routine if we separate the two parts -> "AAAAAABB" vs "AAABAAAB" (6A2B).
+    Similarly, if we would like to expand the calculation, like calculating 
+    the standard deviation, median, etc., separating the two will be easier 
+    for us we implement the logic -> "AABBBBBB" vs "ABBBABBB" (2A6B).
+
+    Second, the code will also be easier to read when we separate the two. 
+    Especially if both logic and calculation are complex. When the code is 
+    complex, "AAAAAAAAAABBBBBBBBBB" will be easier to understand than 
+    "ABABABABABABABABABAB" (10A10B). 
