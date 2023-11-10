@@ -1,11 +1,76 @@
 ///////////////////////////////////////////////////////////////////////////
                                Reflection
                              Workshop - #8
-Full Name  : 
-Student ID#: 
+Full Name  : Nathan Kong
+Student ID#: 150950236
 
 Authenticity Declaration:
 I declare this submission is the result of my own work and has not been
 shared with any other student or 3rd party content provider. This submitted
 piece of work is entirely of my own creation.
 ///////////////////////////////////////////////////////////////////////////
+
+1.
+    Benefit: Sometimes we might want to design a program that uses as few 
+    memory as possible, and runs as fast as possible. In that case, 
+    declaring an extra variable to store the returned value cost extra 
+    memory space and program execution time. By designing the functions 
+    this way creates the flexibility to remove the need of creating an 
+    extra variable for storing the returned value.
+
+    Negative: Designing the functions this way could not enforce the same 
+    coding style throughout the program. It would be better to either 
+    enforce everything to be either "assigning the result to the pointer 
+    argument", or "returning the result".
+
+    Negative: Desining the funciton this way makes make code more 
+    difficult to write. Take the following as example:
+        result = func(arg1, arg2);
+    Naturally, one might think that this function uses 2 arguments to 
+    calculate a result. But in reality, `result` and `arg2` should be the 
+    same object. In this workshop we were suppose to either:
+        func(arg1, &result);
+    or:
+        result = func(arg1, NULL);
+    Designing functions this way could make programmers easier to forgot 
+    that he/she should use `NULL` as the second argument if he/she wants 
+    to call the function with the second case. Besides, the below code:
+        data.a = func1(arg);
+        data.b = func2(arg);
+        data.c = func3(arg);
+    is much clearer on the presenting the idea that we are assigning 
+    values to each of the data members with 3 different functions, 
+    compare to the following:
+        func1(arg, &data.a);
+        func2(arg. &data.b);
+        func3(arg. &data.c);
+    which might not be clear that we are actually doing the assigning.
+
+2.
+    Less than perfect cohesion: start(). In this function, we are trying to 
+    accomplish a lot of things at the same time:
+
+    initializing CatFoodInfo array and ReportData array;
+    Get each element for each array from user;
+    check for the min. cost per serving item;
+
+    display CatFoodInfo array;
+    display ReportData array;
+    display final analysis.
+
+    For the first 3 steps, I think we can encapsulate each of them into a 
+    function to make it more clear on what we are doing.
+    For the last 3 steps, I think we can encapsulate all three of them into 
+    one single function (each of the displaying action is already well 
+    encapsulated as a function).
+    
+    Coupling that could be improved: displayReportData(). In this function, 
+    the index of the cheapest item was provided from the start() function, 
+    which makes this a highly coupled module. To improve this, we can pass 
+    the whole array of ReportData, and look for the cheapest item within 
+    the function instead.
+
+3.
+    It is more convenient to pass one single structure variable instead of spreading out each of the structure's data members. A simpler function signature will also be easier for others to read and use. Also, it will be easier to maintain the code. To make it more efficient, we can pass the structure by reference/address. This is because when we are passing by value, an extra copy of the structure variable will be copied. This could waste a lot of memory space and CPU time especially when the structure is very complicated.
+    To improve displayCatFoodData, we can replace those individual data members with a single structure argument: 
+        void displayCatFoodData(struct CatFoodInfo catFoodInfo);
